@@ -1,0 +1,36 @@
+-----------------------------------------------------------------------------
+	Make Auth page 
+	composer require laravel/ui --dev
+	php artisan ui vue --auth
+	-----------------------------------------------------------------------------
+	make Controller
+	php artisan make:controller HomeController --resource
+	php artisan make:controller Api/HomeController  --api
+	php artisan make:controller Admin/CustomerController --resource
+	------------------------------------------------------------------------------
+	make modal
+	php artisan make:model ModalNAme -mcr
+	---------------------------
+	make migration
+	php artisan make:migration referral_count_users
+	php artisan make:migration referral_count_users --table=users
+	------------------------------------------------------------------------------
+	run  migration
+	php artisan migrate
+	php artisan migrate:refresh
+
+	----------------------------------------------------------------------------------------------------------------------------
+
+
+	ALTER TABLE `customers` ADD `cash_amount` DOUBLE(20,2) NOT NULL DEFAULT '0.00' AFTER `bill_number`, ADD `upi_amount` DOUBLE(20,2) NOT NULL DEFAULT '0.00' AFTER `cash_amount`, ADD `card_amount` DOUBLE(20,2) NOT NULL DEFAULT '0.00' AFTER `upi_amount`;
+
+	INSERT INTO `admin_modules` (`id`, `name`, `module_key`, `icon`, `image`, `module_rank`, `view_sidebar`, `status`, `created_at`, `updated_at`, `is_multi_level`, `module_url`) VALUES (NULL, 'Daly Report', 'Request::is(\'admin/customers/daly-report\') || Request::is(\'admin/customers/daly-report\') ? \'{ACTIVE_CLASS}\"\' : \'\'', '<i class=\"ri-dashboard-line\"></i>', NULL, '1', '1', '1', '2021-12-23 23:10:41', '2021-12-23 23:10:41', '0', 'admin.customers.daly-report');
+
+	----------------------------------------------------------------------------------------------------------------
+	ALTER TABLE `customers` ADD `commission_amount` DOUBLE(20,2) NOT NULL DEFAULT '0.00' AFTER `is_sell`;
+
+
+	INSERT INTO `admin_modules` (`id`, `name`, `module_key`, `icon`, `image`, `module_rank`, `view_sidebar`, `status`, `created_at`, `updated_at`, `is_multi_level`, `module_url`) VALUES (NULL, 'Monthly Report', 'Request::is(\'admin/customers/monthly-report\') || Request::is(\'admin/customers/monthly-report\') ? \'{ACTIVE_CLASS}\"\' : \'\'', '<i class=\"ri-dashboard-line\"></i>', NULL, '1', '1', '1', '2021-12-23 23:10:41', '2021-12-23 23:10:41', '0', 'admin.customers.monthly-report');
+
+	INSERT INTO `admin_modules` (`id`, `name`, `module_key`, `icon`, `image`, `module_rank`, `view_sidebar`, `status`, `created_at`, `updated_at`, `is_multi_level`, `module_url`) VALUES (NULL, 'Yearly Report', 'Request::is(\'admin/customers/yearly-report\') || Request::is(\'admin/customers/yearly-report\') ? \'{ACTIVE_CLASS}\"\' : \'\'', '<i class=\"ri-dashboard-line\"></i>', NULL, '1', '1', '1', '2021-12-23 23:10:41', '2021-12-23 23:10:41', '0', 'admin.customers.yearly-report');
+	
